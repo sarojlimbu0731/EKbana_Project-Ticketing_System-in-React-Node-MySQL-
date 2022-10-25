@@ -49,7 +49,7 @@ const deleteBus= async(req, res,next)=>{
    
     try {
        let id=req.params.busId
-        await Buses.destroy({where:{busID:id}})
+        await Buses.destroy({where:{busId:id}})
         res.send("bus record is deleted successfully")
     } catch (err) {
         next(err)

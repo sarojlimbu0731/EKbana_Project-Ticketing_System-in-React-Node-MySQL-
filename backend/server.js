@@ -1,6 +1,6 @@
 const express =require("express")
 const cors= require("cors")
-
+const cookieParser= require("cookie-parser")
 const app=express()
 
 var corsOption={
@@ -10,18 +10,25 @@ var corsOption={
 //middleware
 app.use(cors(corsOption))
 
+app.use(cookieParser())
 app.use(express.json())
 
 app.use(express.urlencoded({extended:true}))
 
 
  
-//router for bususes
 
-const router=require("./routes/busRouter.js")
-// const router=require("./routes/productRouter.js")
-app.use('/api/v1',router)
+const bRouter=require("./routes/busRouter.js")
+//---middleware for buses----
+app.use('/api/v1/buses',bRouter)
 
+//---middleware for auth----
+const aRouter=require('./routes/authRouter.js')
+app.use('/api/v1/auth',aRouter)
+
+// ------middleware for users-------
+const uRouter=require('./routes/userRouter.js')
+app.use('/api/v1/users',uRouter)
 
 app.use((err,req,res,next)=>{
     const errorStatus=err.status || 500
@@ -33,6 +40,8 @@ app.use((err,req,res,next)=>{
     stack:err.stack
  })
 })
+
+
 
 //testing api
 

@@ -37,17 +37,16 @@ db.Sequelize= Sequelize
 db.sequelize= sequelize
 
 
-// importing the busmodel
+// import busmodel
 db.buses= require('./busModel.js')(sequelize, DataTypes)
 
+//import userModel
+db.users=require('./userModel.js')(sequelize,DataTypes)
 
 db.sequelize.sync({force:false})
 .then(()=>{
     console.log("Re-syncronize is done ...")
 })
-
-
-
 
 
 module.exports =db

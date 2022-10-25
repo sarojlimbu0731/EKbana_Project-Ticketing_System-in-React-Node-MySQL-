@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     rate: {
       type: DataTypes.INTEGER,
-    },
+    }, 
     to: {
       type: DataTypes.STRING,
     },

@@ -15,8 +15,7 @@ router.delete('/deletebus/:busId',busController.deleteBus)
 router.get('/getallbuses',busController.getAllBuses)
 
 //get 
-
 router.get('/getonebus/:busId',busController.getOneBus)
 
 module.exports= router
-
+ 
