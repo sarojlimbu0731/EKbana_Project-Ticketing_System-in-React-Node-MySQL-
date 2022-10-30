@@ -1,21 +1,25 @@
 const busController= require("../controllers/busController.js")
 
+const Token=require("../utils/verifyToken.js")
 const router=require('express').Router()
 
 //-----create------- (by admin)
-router.post('/addbus',busController.addBus)
+router.post('/addbus',Token.verifyAdmin, busController.addBus)
 
 //update
-router.patch('/updatebus/:busId',busController.updateBus)
+router.patch('/updatebus/:busId',Token.verifyAdmin, busController.updateBus)
 
 //delete
-router.delete('/deletebus/:busId',busController.deleteBus)
+router.delete('/deletebus/:busId',Token.verifyAdmin, busController.deleteBus)
 
 //get all
 router.get('/getallbuses',busController.getAllBuses)
 
 //get 
 router.get('/getonebus/:busId',busController.getOneBus)
+
+//get search buses
+router.get('/searchbus',busController.getSearchBus)
 
 module.exports= router
  

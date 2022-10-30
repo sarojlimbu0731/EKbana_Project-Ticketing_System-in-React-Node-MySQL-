@@ -34,7 +34,7 @@ const loginUser= async(req, res, next)=>{
         const isPasswordCorrect = await bcrypt.compare(req.body.password, user.password) 
         if(!isPasswordCorrect) return next(createError(400,"Wrong Password!"))
         
-        const token=jwt.sign({email: user.email, isAdmin: user.isAdmin},"secret")
+        const token=jwt.sign({id:user.userId ,email: user.email, isAdmin: user.isAdmin},"secret")
         
         const {password, ...otherDetails}=user.dataValues
         res.cookie("access_token",token,{

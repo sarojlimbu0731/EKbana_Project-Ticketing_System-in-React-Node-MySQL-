@@ -1,14 +1,16 @@
 const express =require("express")
 const cors= require("cors")
 const cookieParser= require("cookie-parser")
+
 const app=express()
 
-var corsOption={
-    origin:'https://localhost:8001'
-}
+// var corsOption={
+//     origin:'http://localhost:3000'
+// }
 
 //middleware
-app.use(cors(corsOption))
+// app.use(cors(corsOption))
+app.use(cors())
 
 app.use(cookieParser())
 app.use(express.json())
@@ -17,10 +19,13 @@ app.use(express.urlencoded({extended:true}))
 
 
  
-
-const bRouter=require("./routes/busRouter.js")
 //---middleware for buses----
+const bRouter=require("./routes/busRouter.js")
 app.use('/api/v1/buses',bRouter)
+ 
+//---middleware for seats----
+const sRouter=require("./routes/seatRouter.js")
+app.use('/api/v1/seats',sRouter)
 
 //---middleware for auth----
 const aRouter=require('./routes/authRouter.js')

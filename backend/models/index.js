@@ -40,8 +40,14 @@ db.sequelize= sequelize
 // import busmodel
 db.buses= require('./busModel.js')(sequelize, DataTypes)
 
-//import userModel
+// //import userModel
 db.users=require('./userModel.js')(sequelize,DataTypes)
+
+//import seatModel
+db.seats=require('./seatModel.js')(sequelize,DataTypes)
+
+// -----one-to-many relation-----
+  db.buses.hasMany(db.seats, {foreignKey:'busId', as:"seatDetails"})
 
 db.sequelize.sync({force:false})
 .then(()=>{
