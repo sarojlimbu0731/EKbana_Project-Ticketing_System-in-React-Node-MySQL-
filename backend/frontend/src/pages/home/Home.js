@@ -19,18 +19,20 @@ const Home = () => {
       <div className="homeContainer">
 
 {
-  loading? "Loading please wait": <>
+  loading? "Loading please wait": <div className="items">
   {data.data.map(item=> <SearchItem item={item} key={item.busId}/>)}
-
-  </>
+ 
+  </div>
 }
        
 
 
-        <MailList />
-        <Footer />
-       
+     <MailList />
+<Footer />  
       </div>
+ 
+      
+
     </div>
   );
 };

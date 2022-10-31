@@ -3,6 +3,8 @@
     background-color: #003580;
     display: flex;
     justify-content: center;
+   
+    
 }
 
 .navContainer{
@@ -12,6 +14,7 @@
     align-items: center;
     justify-content: space-between;
     color: white;
+    
 }
 
 .logo{
@@ -24,4 +27,16 @@
     border: none;
     color:  #003580;
     cursor: pointer;
+}
+
+.userprofile{
+    background-color: white;
+    color: #003580;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    margin-right: 10px;
+    font-weight: bolder;
+    border: none;
+    outline: none;
 }

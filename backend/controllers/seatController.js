@@ -6,7 +6,7 @@ const Seats=db.seats
 
 //--------create seat--------
 const addSeat= async (req,res,next)=>{
-    let id=req.params.hotelId
+    
     try {
 
         // let busData={
@@ -24,20 +24,23 @@ const addSeat= async (req,res,next)=>{
     }    
 }
 
-// -----------update seat details-----------
-const updateSeat= async (req,res,next)=>{
+// -----------update booked seat to unavailable-----------
+const updateBookedSeat= async (req,res,next)=>{
     let id=req.params.seatId
-    try {     
-        await Seats.update(req.body,{ 
-            where:{
-                seatId:id
-            },
-      
-        })
-      
-        let result=await Seat.findOne({where:{seatId:id}})
+    let {selectedTicket,isAval}=req.body
 
-        res.send(result)
+ 
+    try {  
+        
+       await Promise.all(selectedTicket.map((seatId)=>(
+            Seats.update({isAval:isAval},
+                {
+                where:{seatId:seatId}}
+            )
+         
+        )))
+   
+        res.send("update successful")
         
     } catch (err) {
         next(err)
@@ -58,8 +61,9 @@ const deleteSeat= async(req, res,next)=>{
 
 // --------get all seats---------
 const getAllSeats=async(req,res,next)=>{ 
+    let id =req.params.busId
     try {
-        let data= await Seats.findAll({})
+        let data= await Seats.findAll({where:{busId:id}})
         res.send(data)
     } catch (err) {
         next(err)
@@ -79,4 +83,4 @@ const getOneSeat=async(req,res,next)=>{
 }
 
 
-module.exports ={addSeat, updateSeat, deleteSeat, getAllSeats, getOneSeat}
+module.exports ={addSeat, updateBookedSeat, deleteSeat, getAllSeats, getOneSeat}

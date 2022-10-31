@@ -37,7 +37,7 @@ const Header = ({type}) => {
           Get reward for your travel, unlock instant savings of money with a
           ticket booking app
         </p>
-        <button className="headerBtn">Sign in / Register</button>
+        {/* <button className="headerBtn">Sign in / Register</button> */}
         <div className="headerSearch">
           {/* ------current location----------- */}
         <div className="headerSearchItem">

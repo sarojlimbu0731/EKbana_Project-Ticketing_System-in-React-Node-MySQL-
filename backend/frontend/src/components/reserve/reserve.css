@@ -1,0 +1,80 @@
+.reserve{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.253);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.rContainer{
+    width: 250px;
+    background-color: white;
+    position: relative;
+    padding: 40px;
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.rClose{
+    position: absolute;
+    top:5px;
+    right: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    height: 20px;
+    width: 20px;
+
+}
+
+.rItem{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    
+}
+
+.seat{
+    margin: 5px 0;
+}
+
+.seat>label{
+    font-size: 30px;
+    padding-right: 5px;
+    color: #003580;
+}
+
+.input{
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    
+}
+
+.input:disabled{
+    cursor: not-allowed;
+}
+
+h4{
+    color:#003580;
+}
+
+.rContainer>span{
+    color:#003580;
+    font-weight: bolder;
+}
+
+.rContainer>button{
+    color: white;
+    background-color: #003580;
+    border: none;
+    outline:none;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 5px;
+}

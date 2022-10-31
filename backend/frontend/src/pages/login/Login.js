@@ -13,7 +13,7 @@ const Login = () => {
 
   });
 
-  const { user,isAdmin,loading, error, dispatch } = useContext(AuthContext);
+  const { loading, error, dispatch } = useContext(AuthContext);
 
   const handleChange=(e)=>{
     setCredentials((prev)=>({...prev,[e.target.id]:e.target.value}))

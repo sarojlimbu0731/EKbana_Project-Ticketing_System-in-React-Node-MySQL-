@@ -4,16 +4,16 @@ const Token=require("../utils/verifyToken.js")
 const router=require('express').Router()
 
 //-----create------- (by admin)
-router.post('/addseat/:hotelId',Token.verifyAdmin, seatController.addSeat)
+router.post('/addseat',Token.verifyAdmin, seatController.addSeat)
 
-// //update
-// router.patch('/updatebus/:busId',Token.verifyAdmin, busController.updateBus)
+// //update booked ticket
+ router.patch('/updateticket/:seatId', seatController.updateBookedSeat)
 
 // //delete
 // router.delete('/deletebus/:busId',Token.verifyAdmin, busController.deleteBus)
 
 // //get all
-// router.get('/getallbuses',busController.getAllBuses)
+router.get('/getallseats/:busId',seatController.getAllSeats)
 
 // //get 
 // router.get('/getonebus/:busId',busController.getOneBus)
