@@ -3,36 +3,42 @@ import { createContext, useEffect, useReducer } from "react"
 const INITIAL_STATE={
     user:JSON.parse(localStorage.getItem('user')) || null,
     loading:false,
-    error:null
+    error:null,
+    isAdmin:undefined
 }
 
 export const AuthContext= createContext(INITIAL_STATE)
 
 const AuthReducer= (state,action)=>{
+
     switch (action.type){
         case "LOGIN_START":
             return {
                 user:null,
                 loading:true,
-                error:null
+                error:null,
+                isAdmin:undefined
             }
         case "LOGIN_SUCCESS":
             return {
-                user:action.payload,
+                user:action.payload.data,
                 loading:false,
-                error:null
+                error:null,
+                isAdmin:action.payload.status
             }
         case "LOGIN_FAILURE":
             return {
                 user:null,
                 loading:false,
-                error:action.payload
+                error:action.payload.data,
+                isAdmin:undefined
             }
             case "LOGOUT":
                 return {
                     user:null,
                     loading:false,
-                    error:null
+                    error:null,
+                    isAdmin:undefined
                 }
         default:
             return state
@@ -53,6 +59,7 @@ useEffect(()=>{
             user:state.user,
             loading:state.loading,
             error:state.error,
+            isAdmin:state.isAdmin,
             dispatch
 
         }}

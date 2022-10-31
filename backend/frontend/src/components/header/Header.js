@@ -35,7 +35,7 @@ const Header = ({type}) => {
         <h1 className="headerTitle">A lifetime of discount? It's Genius.</h1>
         <p className="headerDesc">
           Get reward for your travel, unlock instant savings of money with a
-          free hotel booking account
+          ticket booking app
         </p>
         <button className="headerBtn">Sign in / Register</button>
         <div className="headerSearch">
