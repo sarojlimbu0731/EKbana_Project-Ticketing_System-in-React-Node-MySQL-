@@ -1,7 +1,8 @@
 const db= require("../models")
 
 //create main model 
-const Seats=db.seats
+const Seats=db.seats;
+const Users=db.users
 
 
 //--------create seat--------
@@ -27,7 +28,8 @@ const addSeat= async (req,res,next)=>{
 // -----------update booked seat to unavailable-----------
 const updateBookedSeat= async (req,res,next)=>{
     let id=req.params.seatId
-    let {selectedTicket,isAval}=req.body
+    let {selectedTicket,isAval,userId}=req.body
+    let seat=JSON.stringify(selectedTicket)
 
  
     try {  
@@ -39,6 +41,8 @@ const updateBookedSeat= async (req,res,next)=>{
             )
          
         )))
+        await Users.update({seat:seat},{where:{userId:userId}})
+
    
         res.send("update successful")
         

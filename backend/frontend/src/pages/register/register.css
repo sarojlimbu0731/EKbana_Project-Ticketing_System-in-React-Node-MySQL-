@@ -1,0 +1,65 @@
+.register{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+
+.rContainer{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    background-color:  #0071c21e;
+    border-radius: 5px;
+}
+
+h3{
+    text-align: center;
+    color:  #0071c2;
+    margin-bottom: 15px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    gap:10px
+}
+
+.rInput{
+    height: fit-content;
+    padding: 15px 15px;
+    font-size: 15px;
+    outline: none;
+    border: none
+}
+
+.button{
+    height: fit-content;
+    font-size: 15px;
+    border-radius: 5px;
+    padding: 10px 0;
+    outline: none;
+    color: white;
+    background-color:  #0071c2;
+    border: none;
+    cursor: pointer;
+}
+
+span{
+ text-align: center;
+ 
+}
+
+span>button{
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    color: #0071c2;
+    font-weight:bold;
+}
+
+.error{
+    font-size: 15px;
+    color: red !important;
+}

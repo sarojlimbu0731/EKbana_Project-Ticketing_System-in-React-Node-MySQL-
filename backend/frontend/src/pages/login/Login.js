@@ -2,11 +2,11 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import "./login.css";
 import axios from 'axios'
-import { useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 
 const Login = () => {
 
-    const naviagete= useNavigate()
+    const navigate= useNavigate()
   const [credentials, setCredentials] = useState({
     email: undefined,
     password: undefined,
@@ -28,17 +28,21 @@ const Login = () => {
         const data=res.data
         const status=(res.data.isAdmin)
         dispatch({type:"LOGIN_SUCCESS", payload:{data,status}})
-        naviagete('/')
+        navigate('/')
         
     } catch (error) {
         dispatch({type:"LOGIN_FAILURE",payload:error.response.data,})
     }
   }
 
+  const handleNavigate=()=>{
+    navigate('/register')
+  }
 
   return (
     <div className="login">
       <div className="lContainer">
+        <h3>Welcome to Login page</h3>
         <input
           type="text"
           className="lInput"
@@ -55,6 +59,7 @@ const Login = () => {
         />
         <button disabled={loading} onClick={handleClick} className="lButton">Login</button>
         {error && <span>{error.message}</span>}
+        <span>please signup an account ? <button onClick={handleNavigate}>Signup !</button></span>
       </div>
     </div>
   );
