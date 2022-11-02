@@ -2,6 +2,7 @@ import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useState } from "react";
 import "./reserve.css";
+
 import axios from "axios";
 import useFetch from "../../hooks/useFetch";
 import { AuthContext } from "../../context/AuthContext";
@@ -14,6 +15,7 @@ const Reserve = ({ setModal, bus }) => {
   console.log(user)
 
   let seats = data.data;
+ 
 
   const handleSelect = (e) => {
     const checked = e.target.checked;
@@ -33,7 +35,7 @@ const Reserve = ({ setModal, bus }) => {
         isAval: false,
         userId:user.userId
       });
-      console.log(res);
+    res && setModal(false)
     } catch (error) {
       console.log(error.message);
     }

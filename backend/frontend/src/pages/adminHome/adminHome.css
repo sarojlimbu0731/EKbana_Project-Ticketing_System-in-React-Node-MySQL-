@@ -1,0 +1,61 @@
+
+.aContainer{
+  display: flex;
+  justify-content: center;
+
+
+}
+
+.aBuses{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1024px;
+  justify-content: center;
+  gap:5px
+
+}
+
+.adduser{
+  margin-top: 30px;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
+
+.user{
+  display: flex;
+  width: 100%;
+  max-width: 1024px;
+  justify-content: space-between;
+  background-color: #0071c227;
+  margin-bottom: 20px;
+  
+
+
+}
+
+.content{
+  display: flex;
+  margin: 30px 30px ;
+  align-items: center;
+  
+}
+
+.content>span{
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.content>button{
+  color: white;
+  background-color: #0071C2;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  padding: 5px 15px;
+  border-radius: 5px;
+
+}

@@ -10,7 +10,8 @@
     flex-direction: column;
     gap: 10px;
     padding: 20px;
-    background-color: #0071c223;
+    /* background-color: #0071c223; */
+    box-shadow:4px 18px 15px 10px rgba(0, 0, 0, 0.199);
   }
   
   .lInput{

@@ -10,7 +10,7 @@ const Seats=db.seats
 const addBus= async (req,res,next)=>{
 
     try {
-
+        console.log(req.body)
         // let busData={
         //     name:req.body.name,
         //     rate:req.body.rate,
@@ -19,7 +19,7 @@ const addBus= async (req,res,next)=>{
         //     date:req.body.date,
         // }
         const bus= await Buses.create(req.body)
-        console.log(bus)
+        // console.log(bus)
         res.send(bus)        
     } catch (err) {
         next(err)

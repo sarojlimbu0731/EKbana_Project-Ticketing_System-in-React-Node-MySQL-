@@ -32,49 +32,28 @@
 
 }
 
-.rItem{
+.form{
     display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    
+    flex-direction: column;
+    gap:10px
 }
 
-.seat{
-    margin: 5px 0;
+.rInput{
+    height: fit-content;
+    padding: 15px 15px;
+    font-size: 15px;
+    outline: none;
+    border: 1px solid black
 }
 
-.seat>label{
-    font-size: 30px;
-    padding-right: 5px;
-    color: #003580;
-}
-
-.input{
-    height: 30px;
-    width: 30px;
-    cursor: pointer;
-    
-}
-
-.input:disabled{
-    cursor: not-allowed;
-}
-
-h4{
-    color:#003580;
-}
-
-.rContainer>span{
-    color:#003580;
-    font-weight: bolder;
-}
-
-.rContainer>button{
-    color: white;
-    background-color: #003580;
-    border: none;
-    outline:none;
-    height: 30px;
-    cursor: pointer;
+.button{
+    height: fit-content;
+    font-size: 15px;
     border-radius: 5px;
+    padding: 10px 0;
+    outline: none;
+    color: white;
+    background-color:  #0071c2;
+    border: none;
+    cursor: pointer;
 }

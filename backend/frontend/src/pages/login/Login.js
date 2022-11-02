@@ -27,8 +27,10 @@ const Login = () => {
         const res= await axios.post('auth/loginuser',credentials)
         const data=res.data
         const status=(res.data.isAdmin)
+        // console.log(status)
         dispatch({type:"LOGIN_SUCCESS", payload:{data,status}})
-        navigate('/')
+        
+       status===true? navigate('/adminboard') :navigate('/')
         
     } catch (error) {
         dispatch({type:"LOGIN_FAILURE",payload:error.response.data,})

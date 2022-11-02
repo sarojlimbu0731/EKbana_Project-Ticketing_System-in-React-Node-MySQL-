@@ -21,13 +21,17 @@
     display: flex;
     align-items: center;
     gap:40px;
-    margin-bottom: 50px;
+    margin-bottom:20px;
 }
 
 .headerListItem{
 display: flex;
 gap:10px;
 align-items: center;
+}
+
+.headerListItem>span{
+    color:white
 }
 
 .headerListItem.active{

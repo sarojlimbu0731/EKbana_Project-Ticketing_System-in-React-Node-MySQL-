@@ -4,13 +4,13 @@ const cookieParser= require("cookie-parser")
 
 const app=express()
 
-// var corsOption={
-//     origin:'http://localhost:3000'
-// }
+var corsOption={
+    origin:'http://localhost:3000'
+}
 
-//middleware
-// app.use(cors(corsOption))
-app.use(cors())
+// middleware
+app.use(cors(corsOption))
+// app.use(cors())
 
 app.use(cookieParser())
 app.use(express.json())

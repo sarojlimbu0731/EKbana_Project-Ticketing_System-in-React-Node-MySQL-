@@ -3,6 +3,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    
   }
   
 
@@ -10,8 +11,10 @@
     display: flex;
     flex-direction: column;
     gap:10px;
-    background-color:  #0071c21e;
     border-radius: 5px;
+    box-shadow:4px 18px 15px 10px rgba(0, 0, 0, 0.199);
+
+ 
 }
 
 h3{
@@ -23,7 +26,8 @@ h3{
 .form{
     display: flex;
     flex-direction: column;
-    gap:10px
+    gap:10px;
+
 }
 
 .rInput{
