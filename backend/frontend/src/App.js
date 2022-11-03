@@ -8,6 +8,7 @@ import Register from './pages/register/Register';
 import AdminHome from './pages/adminHome/AdminHome';
 import { useContext } from 'react';
 import { AuthContext } from './context/AuthContext';
+import AdminSeat from './admin/adminSeat/AdminSeat';
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
     <Route path='/register' element={<Register/>} />
     
    {isAdmin && <Route path='/adminboard' element={<AdminHome/> } /> } 
+   <Route path='/adminbus/seats/:id' element={<AdminSeat/>} />
   </Routes>
   </BrowserRouter>
  )

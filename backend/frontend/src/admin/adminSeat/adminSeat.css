@@ -1,27 +1,24 @@
-
-.aContainer{
+.aContainer {
   display: flex;
   justify-content: center;
 }
 
-.aBuses{
+.busseat {
   display: flex;
-  flex-direction: column;
   width: 100%;
   max-width: 1024px;
-  justify-content: center;
-  gap:5px
-
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
-.adduser{
+.addseat {
   margin-top: 25px;
   display: flex;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
 }
 
-.user{
+.seats {
   display: flex;
   width: 100%;
   max-width: 1024px;
@@ -29,47 +26,44 @@
   /* background-color: #0071c227; */
   background-color: rgba(0, 0, 0, 0.048);
   margin-bottom: 20px;
-  
-
-
 }
 
-.content{
+
+.content {
   display: flex;
-  margin: 30px 30px ;
+  margin: 30px 30px;
   align-items: center;
-  
 }
 
-.content>span{
+.content > span {
   font-size: 20px;
   font-weight: bolder;
 }
 
-.content>button{
+.content > button {
   color: white;
-  background-color: #0071C2;
+  background-color: #0071c2;
   font-size: 14px;
-  /* font-weight: bold; */
   cursor: pointer;
   border: none;
   outline: none;
   padding: 5px 20px;
   border-radius: 2px;
   box-shadow: 2px 6px 4px 3px rgba(0, 0, 0, 0.288);
-
 }
 
-.busheader{
+.busheader {
   display: flex;
   justify-content: space-between;
-  background-color: #0071C2;
+  background-color: #0071c2;
   padding: 10px 20px;
   margin: -5px;
 }
 
-.busheader>span{
-  color:white;
+.busheader > span {
+  color: white;
   flex: 1;
-  margin:0 10px !important;
+  margin: 0 10px !important;
 }
+
+

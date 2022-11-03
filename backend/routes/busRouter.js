@@ -18,7 +18,7 @@ router.get('/getallbuses',busController.getAllBuses)
 //get 
 router.get('/getonebus/:busId',busController.getOneBus)
 
-//get search buses
+//get search buses from to,from amd date query
 router.get('/searchbus',busController.getSearchBus)
 
 module.exports= router

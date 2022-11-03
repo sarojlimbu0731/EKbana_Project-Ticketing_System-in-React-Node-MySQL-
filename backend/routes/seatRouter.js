@@ -6,17 +6,20 @@ const router=require('express').Router()
 //-----create------- (by admin)
 router.post('/addseat',Token.verifyAdmin, seatController.addSeat)
 
-// //update booked ticket
+// //update booked ticket by passenger
  router.patch('/updateticket/:seatId', seatController.updateBookedSeat)
 
-// //delete
-// router.delete('/deletebus/:busId',Token.verifyAdmin, busController.deleteBus)
+// //update seat status by admin
+router.patch('/updateseat/:seatId', seatController.updateSeat)
+
+// //delete by seat Id
+router.delete('/deleteseat/:seatId', seatController.deleteSeat)
 
 // //get all
 router.get('/getallseats/:busId',seatController.getAllSeats)
 
-// //get 
-// router.get('/getonebus/:busId',busController.getOneBus)
+// //get  by busId
+router.get('/getseats/:busId',seatController.getBusSeat)
 
 module.exports= router
  

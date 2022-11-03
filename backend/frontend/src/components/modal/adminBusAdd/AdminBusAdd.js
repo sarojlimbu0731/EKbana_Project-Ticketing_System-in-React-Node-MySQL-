@@ -21,7 +21,6 @@ const AdminBusAdd = ({setModal}) => {
 
     const handleClick=async(e)=>{
         e.preventDefault()
-        console.log(credentials)
         await axios.post('/buses/addbus',credentials)
         setModal(false)
 

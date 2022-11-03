@@ -1,0 +1,26 @@
+.seat {
+    display: flex;
+    width: 285px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px;
+    box-shadow: 1px 4px 13px 0px black;
+    padding: 20px 15px;
+  }
+
+  .seatItem {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+   
+  }
+  
+  .seatItem>span{
+      color: black;
+  }
+
+  
+.header1{
+    background-color: #0071c250;
+    padding: 1px 2px;
+}

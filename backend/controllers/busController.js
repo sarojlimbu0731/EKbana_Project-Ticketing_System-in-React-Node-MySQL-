@@ -10,7 +10,7 @@ const Seats=db.seats
 const addBus= async (req,res,next)=>{
 
     try {
-        console.log(req.body)
+        // console.log(req.body)
         // let busData={
         //     name:req.body.name,
         //     rate:req.body.rate,

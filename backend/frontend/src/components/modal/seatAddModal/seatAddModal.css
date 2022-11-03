@@ -1,4 +1,4 @@
-.reserve{
+.reserve1{
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.253);
@@ -11,7 +11,7 @@
 
 }
 
-.rContainer{
+.rContainer1{
     width: 200px;
     background-color: white !important;
     position: relative;
@@ -21,7 +21,7 @@
     gap: 10px;
 }
 
-.rClose{
+.rClose1{
     position: absolute;
     top:5px;
     right: 5px;
@@ -30,31 +30,4 @@
     height: 20px;
     width: 20px;
 
-}
-
-.form{
-    display: flex;
-    flex-direction: column;
-    gap:10px
-}
-
-.rInput{
-    height: fit-content;
-    padding: 15px 15px;
-    font-size: 15px;
-    outline: none;
-    width: 90%;
-    border: 1px solid black
-}
-
-.button{
-    height: fit-content;
-    font-size: 15px;
-    border-radius: 5px;
-    padding: 10px 0;
-    outline: none;
-    color: white;
-    background-color:  #0071c2;
-    border: none;
-    cursor: pointer;
 }
