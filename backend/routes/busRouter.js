@@ -13,7 +13,7 @@ router.patch('/updatebus/:busId',Token.verifyAdmin, busController.updateBus)
 router.delete('/deletebus/:busId',Token.verifyAdmin, busController.deleteBus)
 
 //get all
-router.get('/getallbuses',busController.getAllBuses)
+router.get('/getallbuses',Token.verifyAdmin, busController.getAllBuses)
 
 //get 
 router.get('/getonebus/:busId',busController.getOneBus)

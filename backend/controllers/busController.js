@@ -18,15 +18,16 @@ const addBus= async (req,res,next)=>{
         //     from:req.body.from,
         //     date:req.body.date,
         // }
-        const bus= await Buses.create(req.body)
+         await Buses.create(req.body)
+        const data= await Buses.findAll({})
         // console.log(bus)
-        res.send(bus)        
+        res.send(data)        
     } catch (err) {
         next(err)
     }    
 }
 
-// -----------update bus details-----------
+// -----------update bus details by admin-----------
 const updateBus= async (req,res,next)=>{
     let id=req.params.busId
     try {     
@@ -36,23 +37,24 @@ const updateBus= async (req,res,next)=>{
             },
       
         })
-      
-        let result=await Buses.findOne({where:{busId:id}})
-
-        res.send(result)
+        const data=await Buses.findAll({})
+        res.send(data)
+  
         
     } catch (err) {
         next(err)
     }
 }
 
-// -------delete bus---------
+// -------delete bus by admin along with bus seats---------
 const deleteBus= async(req, res,next)=>{
    
     try {
        let id=req.params.busId
         await Buses.destroy({where:{busId:id}})
-        res.send("bus record is deleted successfully")
+        await Seats.destroy({where:{busId:id}})
+        const data= await Buses.findAll({})
+        res.send(data)
     } catch (err) {
         next(err)
     }

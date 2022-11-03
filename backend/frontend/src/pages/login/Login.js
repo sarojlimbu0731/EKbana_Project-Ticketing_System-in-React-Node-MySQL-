@@ -3,8 +3,10 @@ import { AuthContext } from "../../context/AuthContext";
 import "./login.css";
 import axios from 'axios'
 import {useNavigate } from "react-router-dom";
+import { BusContext } from "../../context/BusContext";
 
 const Login = () => {
+  const {dispatched}= useContext(BusContext)
 
     const navigate= useNavigate()
   const [credentials, setCredentials] = useState({
@@ -27,10 +29,18 @@ const Login = () => {
         const res= await axios.post('auth/loginuser',credentials)
         const data=res.data
         const status=(res.data.isAdmin)
-        // console.log(status)
         dispatch({type:"LOGIN_SUCCESS", payload:{data,status}})
         
-       status===true? navigate('/adminboard') :navigate('/')
+      //  status===true? navigate('/adminboard') :navigate('/')
+      if(status=== true){
+        dispatch({type:"FETCH_START"})
+        const res=await axios.get("/buses/getallbuses")
+        const data=res.data
+        dispatched({type:"FETCH_SUCCESS",payload:{data}})
+        navigate('/adminboard')
+      }else{
+        navigate('/')
+      }
         
     } catch (error) {
         dispatch({type:"LOGIN_FAILURE",payload:error.response.data,})

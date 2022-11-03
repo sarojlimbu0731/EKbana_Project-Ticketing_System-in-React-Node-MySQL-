@@ -5,11 +5,13 @@ import App from './App';
 import { SearchContextProvider } from './context/SearchContext.js';
 import { AuthContextProvider } from './context/AuthContext';
 import { SeatContextProvider } from './context/SeatContext';
+import { BusContextProvider } from './context/BusContext';
 // import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <BusContextProvider>
     <SeatContextProvider>
     <AuthContextProvider>
     <SearchContextProvider>
@@ -17,6 +19,7 @@ root.render(
     </SearchContextProvider>
     </AuthContextProvider>
     </SeatContextProvider>
+    </BusContextProvider>
     
   </React.StrictMode>
 );

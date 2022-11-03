@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./adminBusUpdate.css";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from 'axios'
+import { BusContext } from "../../../context/BusContext";
 
 const AdminBusUpdate = ({ bus, setUpdate }) => {
+  const {dispatched}= useContext(BusContext)
   const [credentials, setCredentials] = useState({
     name: bus.name,
     from: bus.from,
@@ -17,29 +19,31 @@ const AdminBusUpdate = ({ bus, setUpdate }) => {
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
- 
+  
   const handleClick=async(e)=>{
     e.preventDefault()
-    await axios.patch(`/buses/updatebus/${bus.busId}`,credentials)
+    const res=await axios.patch(`/buses/updatebus/${bus.busId}`,credentials)
+    const data=res.data
+    dispatched({type:"FETCH_SUCCESS",payload:{data}})
     setUpdate(false)
 
 }
 
   return (
-    <div className="reserve">
-      <div className="rContainer">
+    <div className="reserved">
+      <div className="rcontainer">
         <FontAwesomeIcon
-          className="rClose"
+          className="rclose"
           icon={faCircleXmark}
           onClick={() => setUpdate(false)}
         />
-        <form onSubmit={handleClick} className="form">
+        <form onSubmit={handleClick} className="Form">
           <h3>Update bus Details</h3>
-          <div class="updateDetail">
+          <div class="UpdateDetail">
             <label>Bus Name</label>
             <input
               type="text"
-              className="rInput"
+              className="rInputs"
               id="name"
               value={credentials.name}
               placeholder="Bus Name"
@@ -48,23 +52,23 @@ const AdminBusUpdate = ({ bus, setUpdate }) => {
             />
           </div>
 
-          <div class="updateDetail">
+          <div class="UpdateDetail">
           <label>Destination</label>
           <input
             type="text"
             required
-            className="rInput"
+            className="rInputs"
             id="to"
             value={credentials.to}
             placeholder="Destination"
             onChange={handleChange}
           />
           </div>
-          <div class="updateDetail">
+          <div class="UpdateDetail">
           <label>From</label>
           <input
             type="text"
-            className="rInput"
+            className="rInputs"
             required
             id="from"
             value={credentials.from}
@@ -72,12 +76,12 @@ const AdminBusUpdate = ({ bus, setUpdate }) => {
             onChange={handleChange}
           />
           </div>
-          <div class="updateDetail">
+          <div class="UpdateDetail">
           <label>Rate</label>
           <input
             type="number"
             min={0}
-            className="rInput"
+            className="rInputs"
             required
             id="rate"
             value={credentials.rate}
@@ -85,11 +89,11 @@ const AdminBusUpdate = ({ bus, setUpdate }) => {
             onChange={handleChange}
           />
           </div>
-          <div class="updateDetail">
+          <div class="UpdateDetail">
           <label>Date</label>
           <input
             type="date"
-            className="rInput"
+            className="rInputs"
             required
             id="date"
             value={credentials.date}
@@ -97,7 +101,7 @@ const AdminBusUpdate = ({ bus, setUpdate }) => {
             onChange={handleChange}
           />
           </div> 
-          <button type="submit" className="button">
+          <button type="submit" className="Button">
             Update now
           </button>
         </form>

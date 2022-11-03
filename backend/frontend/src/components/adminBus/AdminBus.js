@@ -1,11 +1,14 @@
 import axios from 'axios';
 import React,{useContext, useState} from 'react';
 import AdminBusUpdate from '../modal/adminBusUpdate/AdminBusUpdate';
-import { Link, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import './adminBus.css'
 import { SeatContext } from '../../context/SeatContext';
+import { BusContext } from '../../context/BusContext';
 
 const AdminBus = ({bus}) => {
+
+    const {dispatched} =useContext(BusContext)
     const navigate= useNavigate()
     const [openUpdate,setOpenUpdate]= useState(false)
 
@@ -15,7 +18,10 @@ const AdminBus = ({bus}) => {
 
     const {dispatch}= useContext(SeatContext)
     const handleDelete=async()=>{
-        await axios.delete(`/buses/deletebus/${bus.busId}`)    
+       const res= await axios.delete(`/buses/deletebus/${bus.busId}`)   
+       const data=res.data
+       dispatched({type:"FETCH_SUCCESS",payload:{data}})
+     
     }
 
 
@@ -34,13 +40,6 @@ const AdminBus = ({bus}) => {
     }
 
  
-    
-
-
-
-
-
-
     
 
   return (

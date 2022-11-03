@@ -1,5 +1,4 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import AdminBus from "../../components/adminBus/AdminBus";
 import Header from "../../components/header/Header";
 import MailList from "../../components/mailList/MailList";
@@ -7,26 +6,28 @@ import Footer from "../../components/footer/Footer";
 import AdminBusAdd from "../../components/modal/adminBusAdd/AdminBusAdd";
 import Navbar from "../../components/navbar/Navbar";
 import "./adminHome.css";
+import { BusContext } from "../../context/BusContext";
 
 
 const AdminHome = () => {
-  const [data, setData] = useState();
+  // const [data, setData] = useState();
 
   const [openModal,setOpenModal]= useState(false)
 
 
-   
-  useEffect(() => {
-    async function fetchData() {
-      const data = await axios.get(
-        "http://localhost:8000/api/v1/buses/getallbuses"
-      );
-      setData(data.data);
-    }
+   const {data, loading} = useContext(BusContext)
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const data = await axios.get(
+  //       "http://localhost:8000/api/v1/buses/getallbuses"
+  //     );
+  //     console.log(data)
+  //     setData(data.data);
+  //   }
 
-    fetchData();
-  });
-
+  //   fetchData();
+  // });
+ 
 
   return (
     <div className="admin">
@@ -55,8 +56,8 @@ const AdminHome = () => {
                 <span>Delete</span>
                 <span>Seats</span>
             </div>
-          {data &&
-            data.map((bus, index) => (
+          {loading ?"Loading Please Wait":
+            data.data.map((bus, index) => (
               <AdminBus bus={bus} key={index} />
             ))}
         </div>
@@ -65,7 +66,6 @@ const AdminHome = () => {
       </div>
                 {openModal && <AdminBusAdd setModal={setOpenModal}/>}
                 
-             
     </div>
   
   );
