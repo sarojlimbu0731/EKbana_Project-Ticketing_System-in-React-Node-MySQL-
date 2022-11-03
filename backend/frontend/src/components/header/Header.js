@@ -4,7 +4,8 @@ import "./header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLocationPin,
-  // faCalendarDays,
+  faVanShuttle,
+  faPerson
 } from "@fortawesome/free-solid-svg-icons";
 
 import { useNavigate } from "react-router-dom";
@@ -36,17 +37,12 @@ const Header = ({ type }) => {
       >
          {isAdmin ?  <div className="headerList">
           <div className="headerListItem active">
-            <span>Stays</span>
+            <span><FontAwesomeIcon icon={faVanShuttle}/> Buses</span>
           </div>
           <div className="headerListItem">
-            <span>Flights</span>
+            <span><FontAwesomeIcon icon={faPerson} />  Book</span>
           </div>
-          <div className="headerListItem">
-            <span>Car rentals</span>
-          </div>
-          <div className="headerListItem">
-            <span>Airport taxis</span>
-          </div>
+        
         </div>:<>
         <h1 className="headerTitle">
               A lifetime of discount? It's Genius.
