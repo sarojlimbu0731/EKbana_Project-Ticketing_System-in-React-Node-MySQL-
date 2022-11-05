@@ -78,7 +78,6 @@ const getAllBuses=async(req,res,next)=>{
 
 // --------get onebus---------
 const getOneBus=async(req,res,next)=>{
-    
     try {
         let id=req.params.busId
         let data= await Buses.findOne({
@@ -87,6 +86,7 @@ const getOneBus=async(req,res,next)=>{
                 as:'seatDetails'
             },
             where:{busId:id}})
+            
         res.send(data)
     } catch (err) {
         next(err)

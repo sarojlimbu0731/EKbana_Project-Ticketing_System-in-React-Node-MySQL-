@@ -9,9 +9,7 @@ module.exports=(sequelize,DataTypes)=>{
             type:DataTypes.STRING,
             
         },
-        date:{
-            type:DataTypes.STRING  
-        },
+   
         isAval:{
             type:DataTypes.BOOLEAN,
             defaultValue:true
@@ -19,6 +17,8 @@ module.exports=(sequelize,DataTypes)=>{
         busId:{
             type:DataTypes.INTEGER
         }
-    })
+    },{
+        timestamps:false
+      })
      return Seat
 }

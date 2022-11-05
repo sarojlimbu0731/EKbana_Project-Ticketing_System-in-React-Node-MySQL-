@@ -9,6 +9,7 @@ import AdminHome from './pages/adminHome/AdminHome';
 import { useContext } from 'react';
 import { AuthContext } from './context/AuthContext';
 import AdminSeat from './admin/adminSeat/AdminSeat';
+import AdminTicketPend from './admin/adminTicketPend/AdminTicketPend';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
     
    {isAdmin && <Route path='/adminboard' element={<AdminHome/> } /> } 
    <Route path='/adminbus/seats/:id' element={<AdminSeat/>} />
+   <Route path='/adminboard/ticketpend' element={<AdminTicketPend/>}/>
   </Routes>
   </BrowserRouter>
  )

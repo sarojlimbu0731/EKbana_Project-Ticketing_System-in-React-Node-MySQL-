@@ -35,6 +35,10 @@ app.use('/api/v1/auth',aRouter)
 const uRouter=require('./routes/userRouter.js')
 app.use('/api/v1/users',uRouter)
 
+//-------middleware for bookTicket------
+const tRouter=require('./routes/bookTicketRouter.js')
+app.use('/api/v1/btickets',tRouter)
+
 app.use((err,req,res,next)=>{
     const errorStatus=err.status || 500
     const errorMessage= err.message || "something went wrong"

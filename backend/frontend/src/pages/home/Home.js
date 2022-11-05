@@ -8,7 +8,7 @@ import useFetch from "../../hooks/useFetch";
 
 const Home = () => {
   const { data, loading } = useFetch("/buses/getallbuses");
-let buses=data.data
+const buses=data.data
   return (
     <div>
       <Navbar />

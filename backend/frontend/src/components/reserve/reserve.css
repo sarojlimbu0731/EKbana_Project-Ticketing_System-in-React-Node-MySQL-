@@ -1,4 +1,4 @@
-.reserve{
+.reserveT{
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.253);
@@ -11,7 +11,7 @@
 
 }
 
-.rContainer{
+.rContainerT{
     width: 250px;
     background-color: white !important;
     position: relative;
@@ -21,7 +21,7 @@
     gap: 10px;
 }
 
-.rClose{
+.rCloseT{
     position: absolute;
     top:5px;
     right: 5px;
@@ -32,31 +32,34 @@
 
 }
 
-.rItem{
+.rItemT{
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
     
 }
 
-.seat{
+.seatT{
     margin: 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.seat>label{
+.seatT>label{
     font-size: 30px;
     padding-right: 5px;
     color: #003580;
 }
 
-.input{
+.inputT{
     height: 30px;
     width: 30px;
     cursor: pointer;
     
 }
 
-.input:disabled{
+.inputT:disabled{
     cursor: not-allowed;
 }
 
@@ -64,12 +67,12 @@ h4{
     color:#003580;
 }
 
-.rContainer>span{
+.rContainerT>span{
     color:#003580;
     font-weight: bolder;
 }
 
-.rContainer>button{
+.rContainerT>button{
     color: white;
     background-color: #003580;
     border: none;
@@ -78,3 +81,4 @@ h4{
     cursor: pointer;
     border-radius: 5px;
 }
+

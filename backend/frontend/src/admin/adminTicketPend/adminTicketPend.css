@@ -1,0 +1,12 @@
+.ticketpend{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.tpendContainer{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 1024px;
+}

@@ -2,7 +2,9 @@ const db= require("../models")
 
 //create main model 
 const Seats=db.seats;
-const Users=db.users
+// const Users=db.users
+const Buses=db.buses
+const BookTickets=db.bookTickets
 
 
 //--------create seat--------
@@ -35,10 +37,10 @@ const updateSeat=async(req,res,next)=>{
   }
 }
 
-// -----------update booked seat to unavailable-----------
+// -----------update booked seat to when passsenger reserve  -----------
 const updateBookedSeat= async (req,res,next)=>{
     let id=req.params.seatId
-    let {selectedTicket,isAval,userId}=req.body
+    let {selectedTicket,isAval,...otherDetails}=req.body
     let seat=JSON.stringify(selectedTicket)
 
  
@@ -51,8 +53,9 @@ const updateBookedSeat= async (req,res,next)=>{
             )
          
         )))
-        await Users.update({seat:seat},{where:{userId:userId}})
-
+        // await Users.update({seat:seat},{where:{userId:userId}})
+    //    ----creating the book_ticket----
+             await  BookTickets.create(otherDetails)      
    
         res.send("update successful")
         
@@ -82,7 +85,13 @@ const deleteSeat= async(req, res,next)=>{
 const getAllSeats=async(req,res,next)=>{ 
     let id =req.params.busId
     try {
-        let data= await Seats.findAll({where:{busId:id}})
+        // let data= await Seats.findAll({where:{busId:id}})
+        let data= await Buses.findOne({
+            include:{
+                model:Seats,
+                as:'seatDetails',
+            },
+            where:{busId:id}})
         res.send(data)
     } catch (err) {
         next(err)

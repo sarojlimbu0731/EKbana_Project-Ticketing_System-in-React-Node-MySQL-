@@ -10,14 +10,15 @@
     margin-top: 40px;
 }
 
-.abus{
+.abus1{
     display: flex;
     width: 100%;
     max-width: 1024px;
     gap: 5px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     justify-content: space-around;
     padding: 5px;
+    /* box-shadow: 1px 2px 5px 3px  rgba(0, 0, 0, 0.322); */
 }
 
 .busfeature{

@@ -20,13 +20,6 @@ module.exports = (sequelize, DataTypes) => {
     date: {
       type: DataTypes.STRING,
     },
-    book_Seat: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    aval_Seat: {
-      type: DataTypes.STRING,
-    },
   },{
     timestamps:false
   })

@@ -1,16 +1,19 @@
 import React, { useContext, useState } from "react";
 import "./header.css";
 
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLocationPin,
   faVanShuttle,
-  faPerson
+  faBell,
+  faUser
 } from "@fortawesome/free-solid-svg-icons";
 
 import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
 import { AuthContext } from "../../context/AuthContext";
+import Profile from "../profile/Profile";
 
 const Header = ({ type }) => {
   const [destination, setDestination] = useState("");
@@ -18,8 +21,10 @@ const Header = ({ type }) => {
   const [date, setDate] = useState();
   const navigate = useNavigate();
 
+  const [openModal, setOpenModal] = useState();
+
   const { dispatch } = useContext(SearchContext);
-  const {isAdmin}= useContext(AuthContext);
+  const {isAdmin,user}= useContext(AuthContext);
 
   const handleSearch = () => {
     dispatch({ type: "NEW_SEARCH", payload: { cLocation, destination, date } });
@@ -36,13 +41,15 @@ const Header = ({ type }) => {
         }
       >
          {isAdmin ?  <div className="headerList">
-          <div className="headerListItem active">
+          <div onClick={()=>navigate('/adminboard')}  className="headerListItem ">
             <span><FontAwesomeIcon icon={faVanShuttle}/> Buses</span>
           </div>
-          <div className="headerListItem">
-            <span><FontAwesomeIcon icon={faPerson} />  Book</span>
+          <div onClick={()=>navigate('/adminboard/ticketpend')}  className="headerListItem">
+            <span><FontAwesomeIcon icon={faBell} /> Notification</span>
           </div>
-        
+          <div onClick={()=>navigate('/adminboard/ticketbook')}  className="headerListItem">
+            <span><FontAwesomeIcon icon={faUser} />  Book</span>
+          </div>
         </div>:<>
         <h1 className="headerTitle">
               A lifetime of discount? It's Genius.
@@ -99,6 +106,7 @@ const Header = ({ type }) => {
           </>
         )}
       </div>
+      {openModal && <Profile user={user} setModal={setOpenModal} />}
     </div>
   );
 };

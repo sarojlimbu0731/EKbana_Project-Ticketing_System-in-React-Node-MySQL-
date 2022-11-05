@@ -64,7 +64,7 @@ const Hotel = () => {
           <Header type="list" />
           <div className="busesContainer">
             <div className="busesWrapper">
-              <button className="bookNow">Reserve or book ticket</button>
+              <button onClick={handleClick} className="bookNow">Reserve or book ticket</button>
               <h1 className="busesTitle">AC Hiace</h1>
               <div className="busesAddress">
                 <FontAwesomeIcon icon={faLocationDot} />
@@ -101,7 +101,7 @@ const Hotel = () => {
                   </p>
                 </div>
                 <div className="busesDetailPrice">
-                  <h1>Perfect for a travel</h1>
+                  <h1>Perfect for travel</h1>
 
                   <h2>
                     <b>Rs.{data.data.rate} </b>Per ticket

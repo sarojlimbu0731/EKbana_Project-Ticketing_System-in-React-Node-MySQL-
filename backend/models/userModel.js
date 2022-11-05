@@ -11,16 +11,12 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
     },
     password: DataTypes.STRING,
-    token: {
-      type: DataTypes.STRING,
-    },
-    seat: {
-      type: DataTypes.STRING,
-    },
     isAdmin: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
+  },{
+    timestamps:false
   });
 
   return User

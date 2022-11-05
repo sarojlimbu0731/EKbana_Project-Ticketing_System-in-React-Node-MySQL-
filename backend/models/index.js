@@ -38,13 +38,19 @@ db.sequelize= sequelize
 
 
 // import busmodel
-db.buses= require('./busModel.js')(sequelize, DataTypes)
+ db.buses= require('./busModel.js')(sequelize, DataTypes)
 
 // //import userModel
-db.users=require('./userModel.js')(sequelize,DataTypes)
+ db.users=require('./userModel.js')(sequelize,DataTypes)
 
 //import seatModel
 db.seats=require('./seatModel.js')(sequelize,DataTypes)
+
+//import seatModel
+db.bookTickets=require('./bookModal.js')(sequelize,DataTypes)
+
+// -----one-to-many ralation-------
+ db.users.hasMany(db.bookTickets,{foreignKey:'userId', as:"bookTickets"})
 
 // -----one-to-many relation-----
   db.buses.hasMany(db.seats, {foreignKey:'busId', as:"seatDetails"})
