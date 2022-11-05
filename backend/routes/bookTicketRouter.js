@@ -6,7 +6,7 @@ const router=require('express').Router()
 router.patch('/updateticket/:bookId',bookedTicketController.updateBookTicket)
 
 //get bookticket success
-router.get('/ticketsucess', bookedTicketController.getAllTicketSuccess)
+router.get('/ticketsuccess', bookedTicketController.getAllTicketSuccess)
 
 //get 
 router.get('/ticketpend', bookedTicketController.getAllTicketPending)

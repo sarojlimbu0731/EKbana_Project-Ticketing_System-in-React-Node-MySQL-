@@ -1,4 +1,5 @@
 const db= require("../models")
+const { SendMailer } = require("../utils/SendMailer");
 
 //create main model 
 const BookTickets= db.bookTickets
@@ -7,15 +8,16 @@ const BookTickets= db.bookTickets
 
 // --------update seat status by admin--------
 const updateBookTicket=async(req,res,next)=>{
-    const id=req.params.seatId
-    const busId=req.query.busId
-
+    const id=req.params.bookId
+    const value= req.body.bookStatus
+    const mailer=req.body
+    SendMailer(mailer)
   try {
-    await Seats.update(req.body,{where:{
-        seatId:id
+    await BookTickets.update({bookStatus:value},{where:{
+        bookId:id
     }})
-    const data= await Seats.findAll({where:{busId:busId}})
-    res.send(data)
+    // const data= await Seats.findAll({where:{busId:busId}})
+    res.send("updated success")
     
   } catch (err) {
     next(err)
@@ -26,19 +28,27 @@ const updateBookTicket=async(req,res,next)=>{
 
 // --------get all bookedTicket success---------
 const getAllTicketSuccess=async(req,res,next)=>{ 
-    try {
-        let data= await BookTickets.findAll({bookStatus:true})
-        res.send(data)
-    } catch (err) {
-        next(err)
-    }
+  try {
+    const data= await BookTickets.findAll({where:{bookStatus:true}})
+    await data.map(ticket=>{
+       ticket.seatName= ticket.seatName.split(',')
+    })
+  res.send(data)
+
+} catch (err) {
+    next(err)
+}
 }
 
 // --------get all bookedTicket pending---------
 const getAllTicketPending=async(req,res,next)=>{
     try {
-        let data= await BookTickets.findAll({where:{bookStatus:false}})
-        res.send(data)
+        const data= await BookTickets.findAll({where:{bookStatus:false}})
+        await data.map(ticket=>{
+           ticket.seatName= ticket.seatName.split(',')
+        })
+      res.send(data)
+
     } catch (err) {
         next(err)
     }

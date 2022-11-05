@@ -49,11 +49,13 @@ db.seats=require('./seatModel.js')(sequelize,DataTypes)
 //import seatModel
 db.bookTickets=require('./bookModal.js')(sequelize,DataTypes)
 
+
 // -----one-to-many ralation-------
- db.users.hasMany(db.bookTickets,{foreignKey:'userId', as:"bookTickets"})
+db.users.hasMany(db.bookTickets,{foreignKey:'userId', as:"bookTickets"})
+
 
 // -----one-to-many relation-----
-  db.buses.hasMany(db.seats, {foreignKey:'busId', as:"seatDetails"})
+db.buses.hasMany(db.seats, {foreignKey:'busId', as:"seatDetails"})
 
 db.sequelize.sync({force:false})
 .then(()=>{

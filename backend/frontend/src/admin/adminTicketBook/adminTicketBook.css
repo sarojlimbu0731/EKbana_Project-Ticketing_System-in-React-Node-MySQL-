@@ -69,8 +69,8 @@ h4{
     font-size: 12px;
 }
 
-.pend{
-    color: red !important
+.appro{
+    color: green !important;
 }
 
 .tickdet>button{
@@ -85,9 +85,8 @@ h4{
 .tickdet>button:hover{
     background-color: blue;
 }
-
 .foot{
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }

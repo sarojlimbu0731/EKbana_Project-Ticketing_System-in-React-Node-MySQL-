@@ -10,8 +10,8 @@ module.exports = {
      const hash = bcrypt.hashSync('admin', salt);
 
       await queryInterface.bulkInsert('users', [{
-       name:"admin1",
-       email:"admin1@gmail.com",
+       name:"admin",
+       email:"admin@gmail.com",
        password:hash,
        isAdmin:true
 

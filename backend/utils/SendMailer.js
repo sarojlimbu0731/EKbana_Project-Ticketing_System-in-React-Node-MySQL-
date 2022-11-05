@@ -1,26 +1,26 @@
 const nodemailer = require('nodemailer')
 
-exports.SendMailer = async() => {
-
+exports.SendMailer = async(mailer) => {
+        // console.log(mailer)
     let transporter = nodemailer.createTransport({
         // service:'hotmail',
         host:"smtp.mailtrap.io",
         port: 2525,
    
         auth: {
-            user: "9770ff5f456da6",
-            pass: "5ec4da30b94e7d"
+            user: "094d25fac05757",
+            pass: "653399b179fb53"
         },
-        tls: {
-            rejectUnauthorized: false
-        }
+        // tls: {
+        //     rejectUnauthorized: false
+        // }
     });
 
     let info = await transporter.sendMail({
-        from: '9770ff5f456da6',
-        to:'zefroholire-3265@yopmail.com',
-        subject: 'mailtrap test',
-        text: 'this the first test',
+        from: 'admin@gmail.com',
+        to:mailer.userEmail,
+        subject: 'Booked Ticket',
+        text: `${mailer.userEmail} has booked ${mailer.seatName} of ${mailer.busName}`,
     });
 
     if(!info){

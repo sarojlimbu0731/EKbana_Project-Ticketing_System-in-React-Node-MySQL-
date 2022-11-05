@@ -10,6 +10,7 @@ import { useContext } from 'react';
 import { AuthContext } from './context/AuthContext';
 import AdminSeat from './admin/adminSeat/AdminSeat';
 import AdminTicketPend from './admin/adminTicketPend/AdminTicketPend';
+import AdminTicketBook from './admin/adminTicketBook/AdminTicketBook';
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
    {isAdmin && <Route path='/adminboard' element={<AdminHome/> } /> } 
    <Route path='/adminbus/seats/:id' element={<AdminSeat/>} />
    <Route path='/adminboard/ticketpend' element={<AdminTicketPend/>}/>
+   <Route path='/adminboard/ticketbook' element={<AdminTicketBook/>}/>
   </Routes>
   </BrowserRouter>
  )

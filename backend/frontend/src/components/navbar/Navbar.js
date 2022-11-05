@@ -28,9 +28,9 @@ const Navbar = () => {
            <span className='logo'>Ticket booking system</span>
            </Link>
           {user? <div><button className='navButton' onClick={()=>setOpenModal(true)} >{user.name}</button><button className='navButton' onClick={handleClick}>Logout</button></div>:<div className='navItems'>
-                <button className='navButton'>Register</button>
+                <button className='navButton' onClick={()=>navigate('/register')}>Register</button>
                 <button className='navButton' onClick={handlebutton}>Login</button>
-            </div>}
+            </div>} 
         </div>
         {openModal &&  <Profile user={user} setModal={setOpenModal} />}
     </div>

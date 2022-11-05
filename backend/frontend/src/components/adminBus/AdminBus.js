@@ -52,7 +52,7 @@ const AdminBus = ({ bus }) => {
             <span>{bus.to}</span>
           </div>
           <div className="busfeature">
-            <span>{bus.rate}</span>
+            <span>Rs.{bus.rate}</span>
           </div>
           <div className="busfeature">
             <span>{bus.date}</span>

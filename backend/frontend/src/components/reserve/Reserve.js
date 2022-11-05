@@ -43,7 +43,8 @@ const Reserve = ({ setModal, bus }) => {
         busName:data.data.name,
         seatName:selectedseat.toString(),
         totalPrice:totalprice,
-        date:data.data.date        
+        date:data.data.date,
+        userEmail:user.email        
       })
     
     setModal(false)

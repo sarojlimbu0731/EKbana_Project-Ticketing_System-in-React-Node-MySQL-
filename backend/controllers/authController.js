@@ -3,7 +3,7 @@ const createError= require('../utils/error.js')
 
 const jwt=require("jsonwebtoken")
 var bcrypt = require('bcryptjs');
-const { SendMailer } = require("../utils/SendMailer");
+
 
 // ------create main User model------
 const Users=db.users
@@ -39,7 +39,7 @@ const loginUser= async(req, res, next)=>{
         
         const {password, ...otherDetails}=user.dataValues
 
-        SendMailer()
+   
         res.cookie("access_token",token,{
             httpOnly:true
         }).send(otherDetails)

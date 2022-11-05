@@ -2,38 +2,30 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Header from "../../components/header/Header";
 import Navbar from "../../components/navbar/Navbar";
-import "./adminTicketPend.css";
+import "./adminTicketBook.css";
 import MailList from '../../components/mailList/MailList'
-
-import Footer from '../../components/footer/Footer'
-
+import Footer from "../../components/footer/Footer";
 
 
-const AdminTicketPend = () => {
+const AdminTicketBook = () => {
   const [tickets, setTickets] = useState();
 
   useEffect(() => {
     async function fetchrecord() {
-      const data = await axios.get("/btickets/ticketpend");
+      const data = await axios.get("/btickets/ticketsuccess");
+
+      console.log(data)
       setTickets(data.data);
     }
     fetchrecord();
   },);
 
 
-  const handlechange=async(e)=>{
-    const index=e.target.value
-    tickets[index].bookStatus=true
-    const value =tickets[index]
-    const  bookId=value.bookId
-    await axios.patch(`http://localhost:8000/api/v1/btickets/updateticket/${bookId}`,value)
-  }
-
   return (
     <div>    <Navbar />
     <Header />
     <div className="ticketpend">
-    <h3>Pending status ticket</h3>
+    <h3>Approved status ticket</h3>
       <div className="tpendContainer">
      
         <div className="tWrapper">
@@ -64,8 +56,8 @@ const AdminTicketPend = () => {
   
                 <div className="tickdet">
                     <span>Book status:</span>
-                    <span className="pend">Pending</span>
-                    <button value={index} onClick={handlechange}>Approve</button>
+                    <span className="appro">Approved</span>
+           
                 </div>
               </div>
             ))}
@@ -74,13 +66,13 @@ const AdminTicketPend = () => {
       </div>
       <MailList/>
       <div className="foot">
-      <Footer/>
+    <Footer/>
       </div>
-
+  
 
     </div>
     </div>
   );
 };
 
-export default AdminTicketPend;
+export default AdminTicketBook;

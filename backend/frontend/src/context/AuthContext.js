@@ -17,22 +17,24 @@ const AuthReducer= (state,action)=>{
                 user:null,
                 loading:true,
                 error:null,
-                isAdmin:null
+                isAdmin:null,
+          
             }
         case "LOGIN_SUCCESS":
-            // state.isAdmin=action.payload.status
             return {
                 user:action.payload.data,
                 loading:false,
                 error:null,
-                isAdmin:action.payload.status
+                isAdmin:action.payload.status,
+   
             }
         case "LOGIN_FAILURE":
             return {
                 user:null,
                 loading:false,
                 error:action.payload.data,
-                isAdmin:null
+                isAdmin:null,
+   
             }
             case "LOGOUT":
                 return {
@@ -40,7 +42,8 @@ const AuthReducer= (state,action)=>{
                     user:null,
                     loading:false,
                     error:null,
-                    isAdmin:null
+                    isAdmin:null,
+              
                 }
         default:
             return state

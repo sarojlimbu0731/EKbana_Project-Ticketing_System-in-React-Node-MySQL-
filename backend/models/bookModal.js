@@ -8,6 +8,9 @@ module.exports = (sequelize, DataTypes) => {
       userId: {
         type: DataTypes.INTEGER,
       }, 
+      userEmail:{
+        type:DataTypes.STRING
+      },
       busName: {
         type: DataTypes.STRING,
       },
