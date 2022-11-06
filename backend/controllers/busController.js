@@ -10,14 +10,7 @@ const Seats=db.seats
 const addBus= async (req,res,next)=>{
 
     try {
-        // console.log(req.body)
-        // let busData={
-        //     name:req.body.name,
-        //     rate:req.body.rate,
-        //     to:req.body.to,
-        //     from:req.body.from,
-        //     date:req.body.date,
-        // }
+ 
          await Buses.create(req.body)
         const data= await Buses.findAll({})
         // console.log(bus)

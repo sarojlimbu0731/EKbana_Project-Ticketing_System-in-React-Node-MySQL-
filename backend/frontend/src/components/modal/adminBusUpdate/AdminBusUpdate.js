@@ -46,9 +46,10 @@ const AdminBusUpdate = ({ bus, setUpdate }) => {
               className="rInputs"
               id="name"
               value={credentials.name}
+              onChange={handleChange}
               placeholder="Bus Name"
               required
-              onChange={handleChange}
+            
             />
           </div>
 

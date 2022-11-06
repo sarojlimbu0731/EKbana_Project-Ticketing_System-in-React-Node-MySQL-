@@ -36,7 +36,8 @@ const Reserve = ({ setModal, bus }) => {
   const handleClick = async () => {
     try {
      
-      await axios.patch(`/seats/updateticket/${bus.busId}`, {
+      setModal(false)
+     let res= await axios.patch(`/seats/updateticket/${bus.busId}`, {
         selectedTicket,
         isAval: false,
         userId:user.userId,
@@ -46,8 +47,11 @@ const Reserve = ({ setModal, bus }) => {
         date:data.data.date,
         userEmail:user.email        
       })
+      if(res.data==="update successful"){
+        alert(`${user.name} has booked ${selectedseat} seat successfully`)
+      }
     
-    setModal(false)
+ 
     } catch (error) {
       console.log(error.message);
     }

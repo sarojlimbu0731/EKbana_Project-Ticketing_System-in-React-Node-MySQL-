@@ -4,7 +4,6 @@ const createError= require('../utils/error.js')
 const jwt=require("jsonwebtoken")
 var bcrypt = require('bcryptjs');
 
-
 // ------create main User model------
 const Users=db.users
 

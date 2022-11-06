@@ -8,15 +8,37 @@ import useFetch from "../../hooks/useFetch";
 
 const List = () => {
   const location = useLocation();
-  const [cLocation, setClocation] = useState(location.state.cLocation);
-  const [destination, setDestination] = useState(location.state.destination);
-  const [date, setDate] = useState(location.state.date);
+  // const [cLocation, setClocation] = useState(location.state.cLocation);
+  // const [destination, setDestination] = useState(location.state.destination);
+  // const [date, setDate] = useState(location.state.date);
+
+  const [credentials, setCredentials] = useState({
+    cLocation: location.state.cLocation,
+   destination: location.state.destination,
+    date: location.state.date,
+  });
 
   //fetching the search data from backend
-  const { data, loading, error, reFetchData } = useFetch(
-    `/buses/searchbus?to=${destination}&from=${cLocation}&date=${date}`
+  // const { data, loading, reFetchData } = useFetch(
+  //   `/buses/searchbus?to=${destination}&from=${cLocation}&date=${date}`
+  // );
+
+  const { data, loading } = useFetch(
+    `/buses/searchbus?to=${credentials.destination}&from=${credentials.cLocation}&date=${credentials.date}`
   );
 
+ 
+
+
+  const handleChange = (e) => {
+    setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  };
+
+  // const handleClick = () => {
+  //   reFetchData(
+  //     // `/buses/searchbus?to=${credentials.destination}&from=${credentials.cLocation}&date=${credentials.date}`
+  //   );
+  // };
   return (
     <div>
       <Navbar />
@@ -28,24 +50,42 @@ const List = () => {
             <h1 className="lsTitle">Search</h1>
 
             {/* ------current-location-------- */}
+
             <div className="lsItem">
               <label>Current Location </label>
-              <input type="text" placeholder={cLocation} />
+              <input
+                id="cLocation"
+                value={credentials.cLocation}
+                onChange={handleChange}
+                type="text"
+                // placeholder={cLocation}
+              />
             </div>
 
             {/* --------destination------------- */}
             <div className="lsItem">
               <label>Destination </label>
-              <input type="text" placeholder={destination} />
+              <input
+                type="text"
+                id="destination"
+                value={credentials.destination}
+                onChange={handleChange}
+                // placeholder={destination}
+              />
             </div>
 
-              {/* -------travel date----------- */}
+            {/* -------travel date----------- */}
             <div className="lsItem">
               <label>Travel date </label>
-              <input type="date" value={date}   onChange={(e)=>setDate(e.target.value)}/>
+              <input
+                type="date"
+                id="date"
+                value={credentials.date}
+                onChange={handleChange}
+              />
             </div>
 
-            <button>Search</button>
+  
           </div>
           <div className="listResult">
             {loading ? (

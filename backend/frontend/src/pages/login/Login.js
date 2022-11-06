@@ -27,11 +27,12 @@ const Login = () => {
     dispatch({type:"LOGIN_START"})
     try {
         const res= await axios.post('auth/loginuser',credentials)
+        console.log(res)
         const data=res.data
         const status=(res.data.isAdmin)
         dispatch({type:"LOGIN_SUCCESS", payload:{data,status}})
         
-      //  status===true? navigate('/adminboard') :navigate('/')
+
       if(status=== true){
         dispatch({type:"FETCH_START"})
         const res=await axios.get("/buses/getallbuses")

@@ -27,6 +27,9 @@ router.delete('/deleteuser/:userId',Token.verifyUser, userController.deleteUser)
 //get 
 router.get('/getoneuser/:userId',Token.verifyUser, userController.getOneUser)
 
+//get search user
+router.get('/getsearchuser/:userId', userController.getSearchUser)
+
 //get all
 router.get('/getalluser',Token.verifyAdmin, userController.getAllUsers)
 

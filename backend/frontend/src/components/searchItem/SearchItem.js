@@ -8,13 +8,13 @@ const SearchItem = ({item}) => {
     <div className='searchItem'>
         <img alt='busImage' className='siImg' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROZe573a_FOulg723XUrHhcbcBOTiFwGvAIshpLg3vy03up-1tq8kvAeysobt8dY7LXpI&usqp=CAU' />
         <div className='siDesc'>
-            {/* <h1 className='siTitle'>Tower street apartment</h1>
-            <span className='siDistance'>500m from the center</span>
-            <span className='siTaxiOp'>Free airport taxi</span>
-            <span className='siSubtitle'>Studio apartment with airconditioning</span>
-            <span className='siFeature'>Entire studio - 1 bathroom - 1 full bed</span> */}
-            <span className='siCancelOp'>Ac Hiace</span>
+            <h1 className='siTitle'>{item.name}</h1>
+            <div className='details'>
+            <span className='siSubtitle'>From: {item.from}</span>
+            <span className='siFeature'>To: {item.to}</span>
+            <span className='siCancelOp'>Travel Date: {item.date}</span>
             <span className='siCancelOpSubtitle'>You can cancel later so, lock in this great price today</span>
+            </div>
         </div>
         <div className='siDetails'>
             <div className='siRating'>
@@ -22,8 +22,8 @@ const SearchItem = ({item}) => {
                 <button>8.9</button>
             </div>
             <div className='siDetailTexts'>
-                <span className='siPrice'>$123</span>
-                <span className='siTaxOp'>Includes taxes and fees</span>
+                <span className='siPrice'>Per ticket Rs.{item.rate}</span>
+
                <Link to={`/buses/${item.busId}`}>
                <button className='siCheckButton'>See availability</button>
                </Link>
