@@ -10,7 +10,7 @@ router.post('/addseat',Token.verifyAdmin, seatController.addSeat)
  router.patch('/updateticket/:seatId',Token.verifyUser, seatController.updateBookedSeat)
 
 // //update seat status by admin
-router.patch('/updateseat/:seatId', seatController.updateSeat)
+router.patch('/updateseat/:seatId',Token.verifyAdmin, seatController.updateSeat)
 
 // //delete by seat Id by admin
 router.delete('/deleteseat/:seatId',Token.verifyAdmin, seatController.deleteSeat)

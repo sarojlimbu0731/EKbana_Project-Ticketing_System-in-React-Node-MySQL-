@@ -1,4 +1,5 @@
 const jwt=  require("jsonwebtoken")
+require('dotenv').config()
 
 const createError =require("./error.js")
 
@@ -8,7 +9,7 @@ const verifyToken = (req, res, next) => {
     return next(createError(401, "You are not authenticated!"));
   }
 
-    jwt.verify(token,"secret",(err,user)=>{
+    jwt.verify(token,process.env.ACCESS_TOKEN_SECRET,(err,user)=>{
 
         if(err) return next(createError(403,"token is not valid!"))
         req.user =user
@@ -20,7 +21,7 @@ const verifyToken = (req, res, next) => {
 const verifyUser =(req,res,next) =>{
     //  console.log(req.params.userId)
     verifyToken(req,res,next, ()=>{
-        if(req.user.id== req.params.userId || req.user.isAdmin){
+        if(req.user.id== req.query.userId ){
             next()
         } 
         else{
@@ -30,8 +31,8 @@ const verifyUser =(req,res,next) =>{
 }
 
 const verifyAdmin =(req,res,next) =>{
-    verifyToken(req,res,next,()=>{
-        if(req.user.isAdmin){
+    verifyToken(req,res,()=>{
+        if(req.user.isAdmin== req.query.userId){
             next()
         }
         else{
