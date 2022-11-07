@@ -20,7 +20,7 @@ const verifyToken = (req, res, next) => {
 
 const verifyUser =(req,res,next) =>{
     //  console.log(req.params.userId)
-    verifyToken(req,res,next, ()=>{
+    verifyToken(req,res, ()=>{
         if(req.user.id== req.query.userId ){
             next()
         } 
