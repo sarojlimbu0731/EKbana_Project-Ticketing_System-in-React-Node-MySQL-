@@ -105,7 +105,25 @@ const getSearchUser=async(req,res,next)=>{
     }
 }
 
+const allUserDetails= async(req,res,next)=>{
+    try {
+        const data= await Users.findAll({
+            where:{
+                isAdmin:false
+            },
+            include:{
+                model:BookTickets,
+                as:"bookTickets"
+            }
+        })
+        res.send(data)
+    } catch (error) {
+        return next(createError(401,"no user found"))
+    }
+
+}
 
 
 
-module.exports ={updateUser, deleteUser, getAllUsers, getOneUser,getSearchUser}
+
+module.exports ={updateUser, deleteUser, getAllUsers, getOneUser,getSearchUser,allUserDetails}

@@ -34,6 +34,10 @@ router.get('/getsearchuser/:userId', userController.getSearchUser)
 router.get('/getalluser', userController.getAllUsers)
 
 
+//get all users by admin
+router.get('/alluserdetail', userController.allUserDetails)
+
+
 
 module.exports= router
 

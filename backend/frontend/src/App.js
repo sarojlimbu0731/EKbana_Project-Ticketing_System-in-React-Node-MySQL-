@@ -11,6 +11,7 @@ import { AuthContext } from './context/AuthContext';
 import AdminSeat from './admin/adminSeat/AdminSeat';
 import AdminTicketPend from './admin/adminTicketPend/AdminTicketPend';
 import AdminTicketBook from './admin/adminTicketBook/AdminTicketBook';
+import AdminUsers from './admin/adminUsers/AdminUsers';
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
    <Route path='/adminbus/seats/:id' element={<AdminSeat/>} />
    <Route path='/adminboard/ticketpend' element={<AdminTicketPend/>}/>
    <Route path='/adminboard/ticketbook' element={<AdminTicketBook/>}/>
+   <Route path='/adminboard/users' element={<AdminUsers/>} />
   </Routes>
   </BrowserRouter>
  )

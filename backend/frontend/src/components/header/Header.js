@@ -7,7 +7,8 @@ import {
   faLocationPin,
   faVanShuttle,
   faBell,
-  faUser
+  faUser,
+  faBook
 } from "@fortawesome/free-solid-svg-icons";
 
 import { useNavigate } from "react-router-dom";
@@ -48,7 +49,10 @@ const Header = ({ type }) => {
             <span><FontAwesomeIcon icon={faBell} /> Notification</span>
           </div>
           <div onClick={()=>navigate('/adminboard/ticketbook')}  className="headerListItem">
-            <span><FontAwesomeIcon icon={faUser} />  Book</span>
+            <span><FontAwesomeIcon icon={faBook}  />  Book</span>
+          </div>
+          <div onClick={()=>navigate('/adminboard/users')}  className="headerListItem">
+            <span><FontAwesomeIcon  icon={faUser}/> User</span>
           </div>
         </div>:<>
         <h1 className="headerTitle">
