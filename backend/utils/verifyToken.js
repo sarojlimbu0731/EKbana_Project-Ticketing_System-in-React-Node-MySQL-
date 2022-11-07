@@ -16,25 +16,34 @@ const verifyToken = (req, res, next) => {
   });
 };
 
-const verifyUser = (req, res, next) => {
-  //  console.log(req.params.userId)
-  verifyToken(req, res, () => {
-    if (req.user.id == req.query.userId) {
-      next();
-    } else {
-      return next(createError(403, "You are not authorized!"));
-    }
-  });
-};
+        if(err) return next(createError(403,"token is not valid!"))
+        req.user =user
+        next()
+    })
 
-const verifyAdmin = (req, res, next) => {
-  verifyToken(req, res, () => {
-    if (req.user.id == req.query.userId) {
-      next();
-    } else {
-      return next(createError(403, "You are not authorized!"));
-    }
-  });
-};
+}
+
+const verifyUser =(req,res,next) =>{
+    //  console.log(req.params.userId)
+    verifyToken(req,res,next, ()=>{
+        if(req.user.id== req.query.userId ){
+            next()
+        } 
+        else{
+            return next(createError(403, "You are not authorized!"))
+        }
+    })
+}
+
+const verifyAdmin =(req,res,next) =>{
+    verifyToken(req,res,()=>{
+        if(req.user.isAdmin== req.query.userId){
+            next()
+        }
+        else{
+            return next(createError(403, "You are not authorized!"))
+        }
+    })
+}
 
 module.exports = { verifyToken, verifyUser, verifyAdmin };
