@@ -5,21 +5,27 @@ import { useNavigate } from "react-router-dom";
 import "./adminBus.css";
 import { SeatContext } from "../../context/SeatContext";
 import { BusContext } from "../../context/BusContext";
+import { AuthContext } from "../../context/AuthContext";
 
 const AdminBus = ({ bus }) => {
   const { dispatched } = useContext(BusContext);
   const navigate = useNavigate();
   const [openUpdate, setOpenUpdate] = useState(false);
-
+  const {user}=useContext(AuthContext)
   const handleUpdate = () => {
     setOpenUpdate(true);
   };
 
   const { dispatch } = useContext(SeatContext);
   const handleDelete = async () => {
-    const res = await axios.delete(`/buses/deletebus/${bus.busId}`);
-    const data = res.data;
-    dispatched({ type: "FETCH_SUCCESS", payload: { data } });
+    try {
+      const res = await axios.delete(`/buses/deletebus/${bus.busId}?userId=${user.userId}`);
+      const data = res.data;
+      dispatched({ type: "FETCH_SUCCESS", payload: { data } });
+    } catch (error) {
+      alert(`Success: ${error.response.data.success} \nMessage: ${error.response.data.message}`)
+
+    }
   };
 
   ///updated code

@@ -4,8 +4,10 @@ import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from 'axios'
 import { BusContext } from "../../../context/BusContext";
+import { AuthContext } from "../../../context/AuthContext";
 
 const AdminBusUpdate = ({ bus, setUpdate }) => {
+  const {user}=useContext(AuthContext)
   const {dispatched}= useContext(BusContext)
   const [credentials, setCredentials] = useState({
     name: bus.name,
@@ -22,9 +24,13 @@ const AdminBusUpdate = ({ bus, setUpdate }) => {
   
   const handleClick=async(e)=>{
     e.preventDefault()
-    const res=await axios.patch(`/buses/updatebus/${bus.busId}`,credentials)
-    const data=res.data
-    dispatched({type:"FETCH_SUCCESS",payload:{data}})
+try {
+  const res=await axios.patch(`/buses/updatebus/${bus.busId}?userId=${user.userId}`,credentials)
+  const data=res.data
+  dispatched({type:"FETCH_SUCCESS",payload:{data}})
+} catch (error) {
+  console.log(error)
+}
     setUpdate(false)
 
 }

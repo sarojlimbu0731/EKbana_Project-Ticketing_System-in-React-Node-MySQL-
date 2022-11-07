@@ -20,7 +20,7 @@ exports.SendMailer = async(mailer) => {
         from: 'admin@gmail.com',
         to:mailer.userEmail,
         subject: 'Booked Ticket',
-        text: `${mailer.userEmail} has booked ${mailer.seatName} of ${mailer.busName}`,
+        text: `${mailer.userEmail} has booked ${mailer.seatName} seat of ${mailer.busName}`,
     });
 
     if(!info){

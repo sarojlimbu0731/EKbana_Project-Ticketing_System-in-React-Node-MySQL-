@@ -11,7 +11,7 @@ const Register = () => {
     name: undefined,
   });
 
-  const [error,setError]=useState()
+  // const [error,setError]=useState()
 
   const handleChange = (e) => {
     setCredentials((prev)=>({...prev,[e.target.id]:e.target.value}));
@@ -23,7 +23,8 @@ const Register = () => {
      await axios.post('auth/registeruser',credentials)
      navigate('/login')
    } catch (error) {
-    setError(error.name)
+    alert(`Success: ${error.response.data.success} \nMessage: ${error.response.data.message}`)
+    // setError(error.name)
    }
     
   }
@@ -63,8 +64,8 @@ const Register = () => {
         />
         <button type="submit" className="button" >Signup</button>
        </form>
-       <span>have an account ? <button onClick={handleNavigate}>Login !</button></span>
-       {error && <span className="error">provide unique email</span>}
+       <span>have an account ? <button onClick={handleNavigate}>Login</button></span>
+       {/* {error && <span className="error">{error.response.data.message}</span>} */}
       </div>
     </div>
   );

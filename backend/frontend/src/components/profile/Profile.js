@@ -1,33 +1,40 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./profile.css";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from 'axios'
+import { AuthContext } from "../../context/AuthContext";
 
 
 const Profile = ({ user, setModal }) => {
 
-
+const {dispatch}=useContext(AuthContext)
   const [credentials, setCredentials] = useState({
     name: user.name,
     password:null,
-    newpassword: "",
+    newpassword:"",
     email:user.email,
     isAdmin:user.isAdmin
   });
-
 
   const handleChange = (e) => {
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
-  console.log(credentials)
+ 
   const handleClick=async(e)=>{
     e.preventDefault()
-
-     const res=await axios.patch(`/users/updateuser/${user.userId}`,credentials)
-     console.log(res)
     setModal(false)
+    try {
+      
+     const res=await axios.patch(`/users/updateuser/${user.userId}?userId=${user.userId}`,credentials)
+     const data=res.data
+     const status=(res.data.isAdmin)
+     dispatch({type:"USER_DATA",payload:{data,status}})
+    } catch (error) {
+      alert(`Success: ${error.response.data.success} \nMessage: ${error.response.data.message}`)
+    }
+
 
 }
 

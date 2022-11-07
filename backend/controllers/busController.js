@@ -1,5 +1,6 @@
 const db= require("../models")
 const { Op } = require("sequelize");
+const createError= require('../utils/error.js')
 
 //create main model 
 const Buses=db.buses
@@ -16,7 +17,7 @@ const addBus= async (req,res,next)=>{
         // console.log(bus)
         res.send(data)        
     } catch (err) {
-        next(err)
+      next(err)
     }    
 }
 
@@ -49,12 +50,13 @@ const deleteBus= async(req, res,next)=>{
         const data= await Buses.findAll({})
         res.send(data)
     } catch (err) {
-        next(err)
+        next(createError(404,"Bus record not found"))
     }
 }
 
 // --------get allbuses---------
 const getAllBuses=async(req,res,next)=>{
+   
     try {
         let data= await Buses.findAll({
             include:{

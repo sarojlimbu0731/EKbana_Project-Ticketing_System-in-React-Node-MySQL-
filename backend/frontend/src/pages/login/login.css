@@ -38,3 +38,13 @@
     text-align: center;
     color: #0071c2;
   }
+
+  .home{
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 15px;
+    background-color: white;
+    color: #0071c2;
+    font-weight: bold;
+  }

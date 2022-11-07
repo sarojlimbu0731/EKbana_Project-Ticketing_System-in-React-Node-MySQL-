@@ -27,7 +27,6 @@ const Login = () => {
     dispatch({type:"LOGIN_START"})
     try {
         const res= await axios.post('auth/loginuser',credentials)
-        console.log(res)
         const data=res.data
         const status=(res.data.isAdmin)
         dispatch({type:"LOGIN_SUCCESS", payload:{data,status}})
@@ -44,6 +43,7 @@ const Login = () => {
       }
         
     } catch (error) {
+      alert(`Success: ${error.response.data.success} \nMessage: ${error.response.data.message}`)
         dispatch({type:"LOGIN_FAILURE",payload:error.response.data,})
     }
   }
@@ -72,8 +72,10 @@ const Login = () => {
         />
         <button disabled={loading} onClick={handleClick} className="lButton">Login</button>
         {error && <span>{error.message}</span>}
-        <span>please signup an account ? <button onClick={handleNavigate}>Signup !</button></span>
+        <span>please signup an account ? <button onClick={handleNavigate}>Signup</button></span>
+        <button className="home" onClick={()=>navigate('/')}>Home</button>
       </div>
+   
     </div>
   );
 };

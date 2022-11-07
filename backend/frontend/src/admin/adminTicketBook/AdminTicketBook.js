@@ -1,31 +1,44 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Header from "../../components/header/Header";
 import Navbar from "../../components/navbar/Navbar";
 import "./adminTicketBook.css";
 import MailList from '../../components/mailList/MailList'
 import Footer from "../../components/footer/Footer";
+import { AuthContext } from "../../context/AuthContext";
 
 
 const AdminTicketBook = () => {
   const [tickets, setTickets] = useState();
+  const {user}=useContext(AuthContext)
 
   useEffect(() => {
     async function fetchrecord() {
       const data = await axios.get("/btickets/ticketsuccess");
-
-      console.log(data)
       setTickets(data.data);
     }
     fetchrecord();
   },);
 
+  const handleDelete=async()=>{
+    try {
+      await axios.delete(`/btickets/ticketdelete?userId=${user.userId}`)
+    } catch (error) {
+      alert(`Success: ${error.response.data.success} \nMessage: ${error.response.data.message}`)
+
+    }
+  }
 
   return (
     <div>    <Navbar />
     <Header />
     <div className="ticketpend">
-    <h3>Approved status ticket</h3>
+      <div className="twrapper">
+      <div className="theader">
+      <h3>Approved ticket status</h3>
+    <button onClick={handleDelete}>Clear all record</button>
+      </div>  
+      </div>
       <div className="tpendContainer">
      
         <div className="tWrapper">

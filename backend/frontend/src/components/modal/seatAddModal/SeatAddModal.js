@@ -4,10 +4,13 @@ import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from 'axios';
 import { SeatContext } from '../../../context/SeatContext';
+import { AuthContext } from '../../../context/AuthContext';
 
 const SeatAddModal = ({setModal,id}) => {
 
   const {dispatch}= useContext(SeatContext)
+  const{user}= useContext(AuthContext)
+
     const [credentials, setCredentials] = useState({
         seatName: undefined,
         busId: id,
@@ -20,9 +23,14 @@ const SeatAddModal = ({setModal,id}) => {
 
     const handleClick=async(e)=>{
         e.preventDefault()
-         const res=await axios.post(`/seats/addseat`,credentials)
-         const data=res.data
-         dispatch({type:"FETCH_SUCCESS",payload:{data}})
+        try {
+          const res=await axios.post(`/seats/addseat?userId=${user.userId}`,credentials)
+          const data=res.data
+          dispatch({type:"FETCH_SUCCESS",payload:{data}})
+        } catch (error) {
+          console.log(error.response.data.messsage)
+          
+        }
         setModal(false)
 
     }

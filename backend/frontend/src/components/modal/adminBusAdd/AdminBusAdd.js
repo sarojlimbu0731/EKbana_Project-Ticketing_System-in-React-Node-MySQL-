@@ -4,9 +4,11 @@ import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from 'axios';
 import { BusContext } from '../../../context/BusContext';
+import { AuthContext } from '../../../context/AuthContext';
 
 const AdminBusAdd = ({setModal}) => {
 
+  const {user}=useContext(AuthContext)
   const {dispatched}=useContext(BusContext)
     const [credentials, setCredentials] = useState({
         name: undefined,
@@ -23,7 +25,7 @@ const AdminBusAdd = ({setModal}) => {
 
     const handleClick=async(e)=>{
         e.preventDefault()
-         const res=await axios.post('/buses/addbus',credentials)
+         const res=await axios.post(`/buses/addbus?userId=${user.userId}`,credentials)
          const data=res.data
          dispatched({type:"FETCH_SUCCESS",payload:{data}})
         setModal(false)

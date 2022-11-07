@@ -82,7 +82,7 @@ const deleteSeat= async(req, res,next)=>{
 }
 
 // --------get all seats---------
-const getAllSeats=async(req,res,next)=>{ 
+const getAllSeats=async(req,res,next)=>{  
     let id =req.params.busId
     try {
         // let data= await Seats.findAll({where:{busId:id}})

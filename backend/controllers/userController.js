@@ -1,6 +1,7 @@
 const db= require("../models")
 const jwt=require("jsonwebtoken")
 var bcrypt = require('bcryptjs');
+const createError= require('../utils/error.js')
 
 
 
@@ -30,9 +31,9 @@ const updateUser= async (req,res,next)=>{
                  const {newpassword,...othervalue}=data
            
                  user.update(othervalue)
-                 res.send("update success")
+                 res.send(user)
         }
-        else if(isPasswordCorrect && data.newpassword!='')
+        else if(isPasswordCorrect && data.newpassword!=='')
         {
             const salt = bcrypt.genSaltSync(10);
             const hash = bcrypt.hashSync(req.body.newpassword, salt);
@@ -40,16 +41,16 @@ const updateUser= async (req,res,next)=>{
              const {newpassword,...othervalue}=data
        
              user.update(othervalue)
-             res.send("update success")
+             res.send(user)
     
-        }else{
-
-            res.send("incorrect credentail")
+        }
+        else {
+            return next(createError(403,"Incorrect Credentials"))
         }
 
         
     } catch (err) {
-        next(err)
+       return next(err)
     }
 }
 

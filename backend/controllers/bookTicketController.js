@@ -1,5 +1,6 @@
 const db= require("../models")
 const { SendMailer } = require("../utils/SendMailer");
+const createError =require('../utils/error.js')
 
 //create main model 
 const BookTickets= db.bookTickets
@@ -54,5 +55,16 @@ const getAllTicketPending=async(req,res,next)=>{
     }
 }
 
+const deleteTicketSuccess=async(req,res,next)=>{
+  try {
+    await BookTickets.destroy({
+      where:{bookStatus:true}
+    })
+    
+  } catch (error) {
+    return next(createError(403,"No record found"))
+  }
+}
 
-module.exports ={ updateBookTicket,getAllTicketSuccess,getAllTicketPending}
+
+module.exports ={ updateBookTicket,getAllTicketSuccess,getAllTicketPending,deleteTicketSuccess}

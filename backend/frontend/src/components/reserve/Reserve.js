@@ -11,9 +11,9 @@ const Reserve = ({ setModal, bus }) => {
 
   const [selectedTicket, setSelectedTicket] = useState([]);
   const [selectedseat, setSelectedSeat] = useState([]);
-
-  const { data, loading } = useFetch(`/seats/getallseats/${bus.busId}`);
   const {user}= useContext(AuthContext)
+  const { data, loading } = useFetch(`/seats/getallseats/${bus.busId}`);
+  
 
   const handleSelect = (e) => {
     const checked = e.target.checked;
@@ -37,7 +37,7 @@ const Reserve = ({ setModal, bus }) => {
     try {
      
       setModal(false)
-     let res= await axios.patch(`/seats/updateticket/${bus.busId}`, {
+     let res= await axios.patch(`/seats/updateticket/${bus.busId}?userId=${user.userId}`, {
         selectedTicket,
         isAval: false,
         userId:user.userId,
@@ -53,7 +53,8 @@ const Reserve = ({ setModal, bus }) => {
     
  
     } catch (error) {
-      console.log(error.message);
+      alert(`Success: ${error.response.data.success} \nMessage: ${error.response.data.message}`)
+      // console.log(error)
     }
   
   };

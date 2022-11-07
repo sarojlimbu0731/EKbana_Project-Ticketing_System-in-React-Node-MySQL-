@@ -6,10 +6,10 @@ const router=require('express').Router()
 //-----create------- (by admin)
 router.post('/addbus',Token.verifyAdmin, busController.addBus)
 
-//update  by admin
+//update
 router.patch('/updatebus/:busId',Token.verifyAdmin, busController.updateBus)
 
-//delete    by admin
+//delete    
 router.delete('/deletebus/:busId',Token.verifyAdmin, busController.deleteBus)
 
 //get all

@@ -22,16 +22,16 @@ const router=require('express').Router()
 router.patch('/updateuser/:userId',Token.verifyUser, userController.updateUser)
 
 //delete
-router.delete('/deleteuser/:userId',Token.verifyUser, userController.deleteUser)
+router.delete('/deleteuser/:userId', userController.deleteUser)
 
 //get 
-router.get('/getoneuser/:userId',Token.verifyUser, userController.getOneUser)
+router.get('/getoneuser/:userId', userController.getOneUser)
 
 //get search user
 router.get('/getsearchuser/:userId', userController.getSearchUser)
 
 //get all
-router.get('/getalluser',Token.verifyAdmin, userController.getAllUsers)
+router.get('/getalluser', userController.getAllUsers)
 
 
 

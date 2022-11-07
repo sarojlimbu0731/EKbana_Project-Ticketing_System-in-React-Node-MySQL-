@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from 'axios'
 import { useLocation } from "react-router-dom";
 import { SeatContext } from "../../../context/SeatContext";
+import { AuthContext } from "../../../context/AuthContext";
 
 const SeatUpdateModal = ({ seat, setModal,busId}) => {
   const [credentials, setCredentials] = useState({
@@ -16,7 +17,7 @@ const SeatUpdateModal = ({ seat, setModal,busId}) => {
   const {dispatch}= useContext(SeatContext)
   const location = useLocation();
   const id = location.pathname.split("/")[3];
-
+  const {user}=useContext(AuthContext)
   const handleChange = (e) => {
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
@@ -25,7 +26,7 @@ const SeatUpdateModal = ({ seat, setModal,busId}) => {
   const handleSubmit=async(e)=>{
     e.preventDefault()
     try {
-        let res=await axios.patch(`/seats/updateseat/${seat.seatId}?busId=${busId}`,credentials)
+        let res=await axios.patch(`/seats/updateseat/${seat.seatId}?userId=${user.userId}&busId=${busId}`,credentials)
         let data=res.data
         dispatch({type:"FETCH_SUCCESS",payload:{data}})
         setModal(false)

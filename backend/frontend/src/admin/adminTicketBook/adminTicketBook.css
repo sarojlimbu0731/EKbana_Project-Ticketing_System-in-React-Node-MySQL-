@@ -92,3 +92,27 @@ h4{
     align-items: center;
     justify-content: center;
 }
+
+.theader{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1024px;
+}
+
+.theader>button{
+    cursor: pointer;
+    background-color: #0071c3;
+    color:white;
+    border: none;
+    outline: none;
+    border-radius: 2px;
+
+}
+
+.twrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}

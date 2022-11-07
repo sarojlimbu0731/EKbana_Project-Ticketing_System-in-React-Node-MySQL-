@@ -3,16 +3,22 @@ import './seatComp.css';
 import axios from 'axios';
 import SeatUpdateModal from '../../components/modal/seatUpdateModal/SeatUpdateModal';
 import { SeatContext } from '../../context/SeatContext';
+import { AuthContext } from '../../context/AuthContext';
 
 const SeatComp = ({seat,busId}) => {
 const {dispatch}=useContext(SeatContext)
-
+const {user}=useContext(AuthContext)
     const [openModal,setOpenModal]= useState(false)
     const handleDelete= async(e)=>{
-        const id=e.target.value
-        const res=await axios.delete(`/seats/deleteseat/${id}?busId=${busId}`)
-        const data=res.data
-          dispatch({type:"FETCH_SUCCESS",payload:{data}})
+ try {
+  const id=e.target.value
+  const res=await axios.delete(`/seats/deleteseat/${id}?userId=${user.userId}&busId=${busId}`)
+  const data=res.data
+    dispatch({type:"FETCH_SUCCESS",payload:{data}})
+ } catch (error) {
+  alert(`Success: ${error.response.data.success} \nMessage: ${error.response.data.message}`)
+
+ }
     }
 
     const handleModal= () =>{

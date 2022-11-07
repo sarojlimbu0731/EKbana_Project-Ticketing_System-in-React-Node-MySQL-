@@ -1,17 +1,18 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Header from "../../components/header/Header";
 import Navbar from "../../components/navbar/Navbar";
 import "./adminTicketPend.css";
 import MailList from '../../components/mailList/MailList'
 
 import Footer from '../../components/footer/Footer'
+import { AuthContext } from "../../context/AuthContext";
 
 
 
 const AdminTicketPend = () => {
   const [tickets, setTickets] = useState();
-
+  const  {user}=useContext(AuthContext)
   useEffect(() => {
     async function fetchrecord() {
       const data = await axios.get("/btickets/ticketpend");
@@ -22,11 +23,16 @@ const AdminTicketPend = () => {
 
 
   const handlechange=async(e)=>{
-    const index=e.target.value
-    tickets[index].bookStatus=true
-    const value =tickets[index]
-    const  bookId=value.bookId
-    await axios.patch(`http://localhost:8000/api/v1/btickets/updateticket/${bookId}`,value)
+
+    try {
+      const index=e.target.value
+      tickets[index].bookStatus=true
+      const value =tickets[index]
+      const  bookId=value.bookId
+      await axios.patch(`/btickets/updateticket/${bookId}?userId=${user.userId}`,value)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (

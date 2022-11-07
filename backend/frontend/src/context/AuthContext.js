@@ -21,14 +21,25 @@ const AuthReducer= (state,action)=>{
           
             }
         case "LOGIN_SUCCESS":
+            const {password,...otherdata}=action.payload.data
+            state.user=otherdata
             return {
-                user:action.payload.data,
+                user:otherdata,
                 loading:false,
                 error:null,
                 isAdmin:action.payload.status,
    
             }
-        case "LOGIN_FAILURE":
+            case "USER_DATA":
+                return {
+                    user:action.payload.data,
+                    loading:false,
+                    error:null,
+                    isAdmin:action.payload.status,
+       
+                }
+
+            case "LOGIN_FAILURE":
             return {
                 user:null,
                 loading:false,
@@ -36,15 +47,15 @@ const AuthReducer= (state,action)=>{
                 isAdmin:null,
    
             }
-            case "LOGOUT":
-                return {
-                    // user:localStorage.clear('user'),
-                    user:null,
-                    loading:false,
-                    error:null,
-                    isAdmin:null,
-              
-                }
+        case "LOGOUT":
+            return {
+                // user:localStorage.clear('user'),
+                user:null,
+                loading:false,
+                error:null,
+                isAdmin:null,
+            
+            }
         default:
             return state
     }
