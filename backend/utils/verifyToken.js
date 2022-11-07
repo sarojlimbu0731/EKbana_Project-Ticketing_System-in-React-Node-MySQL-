@@ -32,7 +32,7 @@ const verifyUser =(req,res,next) =>{
 
 const verifyAdmin =(req,res,next) =>{
     verifyToken(req,res,()=>{
-        if(req.user.isAdmin== req.query.userId){
+        if(req.user.id== req.query.userId){
             next()
         }
         else{
