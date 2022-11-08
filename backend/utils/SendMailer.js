@@ -8,8 +8,8 @@ exports.SendMailer = async(mailer) => {
         port: 2525,
    
         auth: {
-            user: "094d25fac05757",
-            pass: "653399b179fb53"
+            user: "9770ff5f456da6",
+            pass: "5ec4da30b94e7d"
         },
         // tls: {
         //     rejectUnauthorized: false
