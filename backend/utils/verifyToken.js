@@ -9,7 +9,9 @@ const verifyToken = (req, res, next) => {
     return next(createError(401, "You are not authenticated!"));
   }
 
-  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+  // jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+    jwt.verify(token, "iamsecretkey", (err, user) => {
+
     if (err) return next(createError(403, "token is not valid!"));
     req.user = user;
     next();
